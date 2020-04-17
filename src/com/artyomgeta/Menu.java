@@ -2,6 +2,8 @@ package com.artyomgeta;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
+import java.util.Objects;
 
 public class Menu extends JFrame {
     private JPanel panel1;
@@ -28,8 +30,18 @@ public class Menu extends JFrame {
             }
         });
 
+        if (Objects.requireNonNull(new File("saves/").list()).length == 1) {
+
+        }
+
+        продолжитьButton.setEnabled(Main.isNewGame());
+
+        продолжитьButton.addActionListener(e -> {
+            new Game().run();
+            dispose();
+        });
+
         выйтиButton.addActionListener(e -> dispose());
-        продолжитьButton.setEnabled(false);
     }
 
 }
